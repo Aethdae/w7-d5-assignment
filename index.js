@@ -3,7 +3,9 @@ const output = document.getElementById("output");
 async function main() {
   render("Loading...");
   const apiKey = await getKey();
-  render(apiKey);
+  if (apiKey) {
+    render(apiKey);
+  }
 }
 
 function render(string) {
@@ -28,6 +30,7 @@ async function getKey() {
     const { key } = await res.json();
     return key;
   } catch (error) {
+    render(error);
     console.error(error);
   }
 }

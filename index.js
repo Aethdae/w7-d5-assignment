@@ -1,11 +1,13 @@
 const output = document.getElementById("output");
 
 async function main() {
+  render("Loading...");
   const apiKey = await getKey();
   render(apiKey);
 }
 
 function render(string) {
+  output.textContent = "";
   const element = document.createElement("p");
   element.innerText = string;
   output.appendChild(element);
